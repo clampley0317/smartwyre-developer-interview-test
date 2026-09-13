@@ -6,7 +6,7 @@ using Xunit;
 
 namespace Smartwyre.DeveloperTest.Tests;
 
-public class PaymentServicesTEst
+public class PaymentServicesTest
 {
     [Fact]
     public void Calculate_WhenFixedCashAmountIsValid_StoresTheFixedAmount()
@@ -177,7 +177,7 @@ public class PaymentServicesTEst
             new IIncentiveCalculator[]
             {
                 new FixedCashAmountCalculator(),
-                new FixeRateRebateCalculator(),
+                new FixedRateRebateCalculator(),
                 new AmountPerUomCalculator()
             });
 

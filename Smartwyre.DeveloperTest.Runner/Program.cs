@@ -16,7 +16,7 @@ class Program
             new DemoProductDataStore(),
             [
                 new FixedCashAmountCalculator(),
-                new FixeRateRebateCalculator(),
+                new FixedRateRebateCalculator(),
                 new AmountPerUomCalculator()
             ]);
 

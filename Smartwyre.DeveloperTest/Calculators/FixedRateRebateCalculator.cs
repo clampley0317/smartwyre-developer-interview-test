@@ -2,7 +2,7 @@ using Smartwyre.DeveloperTest.Types;
 
 namespace Smartwyre.DeveloperTest.Calculators;
 
-public class FixeRateRebateCalculator : IIncentiveCalculator
+public class FixedRateRebateCalculator : IIncentiveCalculator
 {
     public IncentiveType IncentiveType => IncentiveType.FixedRateRebate;
 
