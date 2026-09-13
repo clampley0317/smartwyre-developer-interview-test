@@ -8,14 +8,12 @@ public class AmountPerUomCalculator : IIncentiveCalculator
 
     public CalculateRebateResult Calculate(Rebate rebate, Product product, decimal volume)
     {
-        var result = new CalculateRebateResult() { Success = false, RebateAmount = 0m };
         if (product.SupportedIncentives.HasFlag(SupportedIncentiveType.AmountPerUom)
             && rebate.Amount != 0
             && volume != 0)
         {
-            result.RebateAmount = rebate.Amount * volume;
-            result.Success = true;
+            return CalculateRebateResult.Successful(rebate.Amount * volume);
         }
-        return result;
+        return CalculateRebateResult.Failure();
     }
 }

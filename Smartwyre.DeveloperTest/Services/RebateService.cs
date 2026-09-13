@@ -16,17 +16,15 @@ public class RebateService(IRebateDataStore rebateDataStore, IProductDataStore p
 
     public CalculateRebateResult Calculate(CalculateRebateRequest request)
     {
-        var result = new CalculateRebateResult() { Success = false, RebateAmount = 0m };
-
         var rebate = _rebateDataStore.GetRebate(request.RebateIdentifier);
         var product = _productDataStore.GetProduct(request.ProductIdentifier);
 
         if (rebate is null || product is null || !_calculators.TryGetValue(rebate.Incentive, out var calculator))
         {
-            return result;
+            return CalculateRebateResult.Failure();
         }
 
-        result = calculator.Calculate(rebate, product, request.Volume);
+        var result = calculator.Calculate(rebate, product, request.Volume);
 
         if (result.Success)
         {

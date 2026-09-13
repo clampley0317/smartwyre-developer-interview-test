@@ -8,12 +8,13 @@ public class FixeRateRebateCalculator : IIncentiveCalculator
 
     public CalculateRebateResult Calculate(Rebate rebate, Product product, decimal volume)
     {
-        var result = new CalculateRebateResult() { Success = false, RebateAmount = 0m };
-        if (product.SupportedIncentives.HasFlag(SupportedIncentiveType.FixedCashAmount) && rebate.Amount != 0)
+        if (product.SupportedIncentives.HasFlag(SupportedIncentiveType.FixedRateRebate)
+            && rebate.Percentage != 0
+            && product.Price != 0
+            && volume != 0)
         {
-            result.RebateAmount = rebate.Amount;
-            result.Success = true;
+            return CalculateRebateResult.Successful(product.Price * rebate.Percentage * volume);
         }
-        return result;
+        return CalculateRebateResult.Failure();
     }
 }

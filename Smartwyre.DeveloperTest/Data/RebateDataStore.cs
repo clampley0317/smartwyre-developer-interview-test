@@ -4,10 +4,10 @@ namespace Smartwyre.DeveloperTest.Data;
 
 public class RebateDataStore : IRebateDataStore
 {
-    public Rebate GetRebate(string rebateIdentifier)
+    public Rebate? GetRebate(string rebateIdentifier)
     {
         // Access database to retrieve account, code removed for brevity 
-        return new Rebate();
+        return null;
     }
 
     public void StoreCalculationResult(Rebate account, decimal rebateAmount)
